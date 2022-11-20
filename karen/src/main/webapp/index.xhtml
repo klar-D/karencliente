@@ -1,0 +1,88 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://primefaces.org/ui">
+    <html>
+
+    <h:head>
+        <title>Cliente Karen</title>
+    </h:head>
+
+    <h:body>
+
+        <h:form id="formulario">
+            <p:panel>
+                <f:facet name="header">
+                    <p:outputLabel value="Formulario de Ingreso de Datos" style="float: left"/>
+
+                    <p:growl id="growl" showDetail="true" />
+                    <p:commandButton
+                            value="Guardar"
+                            update="formulario growl"
+                            style="float: right"
+                            actionListener="#{personaBean.guardar}"/>
+                </f:facet>
+
+                <!--Panel grid-->
+                <p:panelGrid columns="4" layout="grid">
+
+                    <p:outputLabel value="Primer Nombre"/>
+                    <p:inputText value="#{personaBean.primerNombre}"/>
+
+                    <p:outputLabel value="Segundo Nombre"/>
+                    <p:inputText value="#{personaBean.segundoNombre}"/>
+
+                    <p:outputLabel value="Primer Apellido"/>
+                    <p:inputText value="#{personaBean.primerApellido}"/>
+
+                    <p:outputLabel value="Segundo Apellido"/>
+                    <p:inputText value="#{personaBean.segundoApellido}"/>
+
+                    <p:outputLabel value="fecha Nacimiento"/>
+                    <p:datePicker value="#{personaBean.fechaNacimiento}"/>
+
+                    <p:outputLabel value="Tipo Persona"/>
+                    <p:inputText value="#{personaBean.refTipoPersona}"/>
+
+                </p:panelGrid>
+
+                <p:dataTable var="data"
+                             id="tabla"
+                             widgetVar="tabla"
+                             paginator="true"
+                             rows="5"
+                             value="#{personaBean.lista}">
+                    <p:column headerText="Primer Nombre">
+                        <h:outputText value="#{data.primerNombre}"/>
+                    </p:column>
+
+                    <p:column headerText="Segundo Nombre">
+                        <h:outputText value="#{data.segundoNombre}"/>
+                    </p:column>
+
+                    <p:column headerText="Primer Apellido">
+                        <h:outputText value="#{data.primerApellido}"/>
+                    </p:column>
+
+                    <p:column headerText="Segundo Apellido">
+                        <h:outputText value="#{data.segundoApellido}"/>
+                    </p:column>
+
+                    <p:column headerText="Fecha Nacimiento">
+                        <h:outputText value="#{data.fechaNacimiento}"/>
+                    </p:column>
+
+                    <p:column headerText="Tipo Persona">
+                        <h:outputText value="#{data.refTipoPersona}"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </p:panel>
+        </h:form>
+    </h:body>
+
+    </html>
+</f:view>
